@@ -21,7 +21,7 @@ class Ability extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'int',
+        'id' => 'string',
         'entity_id' => 'int',
         'only_owned' => 'boolean',
     ];

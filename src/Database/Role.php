@@ -21,7 +21,7 @@ class Role extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'int',
+        'id' => 'string',
     ];
 
     /**

@@ -3,6 +3,7 @@
 namespace Silber\Bouncer\Conductors\Concerns;
 
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Silber\Bouncer\Database\Models;
 use Illuminate\Database\Eloquent\Model;
 
@@ -137,7 +138,10 @@ trait AssociatesAbilities
         $attributes += Models::scope()->getAttachAttributes();
 
         $records = array_map(function ($id) use ($attributes) {
-            return ['ability_id' => $id] + $attributes;
+            return [
+                'id' => Str::orderedUuid(),
+                'ability_id' => $id
+            ] + $attributes;
         }, $ids);
 
         Models::query('permissions')->insert($records);
