@@ -5,7 +5,6 @@ namespace Silber\Bouncer\Conductors;
 use Silber\Bouncer\Helpers;
 use Illuminate\Support\Collection;
 use Silber\Bouncer\Database\Models;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class AssignsRoles
@@ -103,7 +102,6 @@ class AssignsRoles
             ->crossJoin($authorityIds)
             ->mapSpread(function ($roleId, $authorityId) use ($morphType) {
                 return Models::scope()->getAttachAttributes() + [
-                    'id' => Str::orderedUuid(),
                     'role_id' => $roleId,
                     'entity_id' => $authorityId,
                     'entity_type' => $morphType,

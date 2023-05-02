@@ -10,7 +10,6 @@ use Silber\Bouncer\Database\Queries\Roles as RolesQuery;
 
 use App\User;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use InvalidArgumentException;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -220,7 +219,6 @@ trait IsRole
 
         return array_map(function ($key) use ($type) {
             return Models::scope()->getAttachAttributes() + [
-                'id' => Str::orderedUuid(),
                 'role_id'     => $this->getKey(),
                 'entity_type' => $type,
                 'entity_id'   => $key,
